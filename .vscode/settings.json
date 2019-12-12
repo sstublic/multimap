@@ -4,5 +4,5 @@
         "javascriptreact",
         "typescript"
     ],
-    "jest.pathToJest": "npm test --"
+    "jest.pathToJest": "npm run test --"
 }

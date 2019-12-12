@@ -5,13 +5,14 @@
   "main": "./dist/multimap.js",
   "typings": "./dist/multimap.d.ts",
   "scripts": {
-    "test": "jest --no-cache --passWithNoTests",
+    "test": "jest --no-cache",
     "start": "node ../dist/main.js",
     "build": "tsc"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "lodash": "4.17.15"
   },
   "devDependencies": {
   }
