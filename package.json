@@ -17,14 +17,14 @@
     "lerna": "^3.19.0",
     "@types/jest": "^24.0.15",
     "@types/lodash": "4.14.136",
-    "@types/node": "^12.6.8",
-    "@typescript-eslint/eslint-plugin": "^1.12.0",
-    "@typescript-eslint/parser": "^1.12.0",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.17.2",
+    "@types/node": "^12.12.17",
+    "@typescript-eslint/eslint-plugin": "^2.11.0",
+    "@typescript-eslint/parser": "^2.11.0",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1",
     "jest": "24.8.0",
-    "ts-jest": "24.0.2",
-    "typescript": "^3.5.3"
+    "ts-jest": "24.2.0",
+    "typescript": "^3.7.3"
   }
 }
