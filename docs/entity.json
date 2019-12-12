@@ -1,0 +1,36 @@
+// dictionary of properties pattern
+{
+    "multimap:id": "item1",
+    "multimap:displayName": "item1",
+
+    // links to other entity
+    "todo:tasklink": [
+        { "_reference": "item_id", "value": 5 }, 
+        { "_reference": "item_id_2", "value": 1 }
+    ],
+
+    // property
+    "estimatedWork": 10, // shorthand for "estimatedWork": [{ "value": 10 }],
+    "tasktype": "todo",
+
+    // property, tags pattern, support multiple items
+    "tag": [
+        { "value": "important" }, 
+        { "value": "inbox" }
+    ],
+
+    "taskbody": "some markup"
+}
+
+// array of properties pattern
+{
+    [
+        { "type": "_link", "referencedItem": "item_id", "value": 5 },
+        { "type": "_link", "referencedItem": "item_id_2", "value": 1 },
+        { "type": "estimatedWork", "value": 10 },
+        { "type": "tasktype", "value": "todo" },
+        { "type": "tag", "value": "important" },
+        { "type": "tag", "value": "inbox" }
+    ]
+}
+
