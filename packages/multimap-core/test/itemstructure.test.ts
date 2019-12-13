@@ -1,11 +1,17 @@
-import { MultiMapItem, MultiMapStore } from "../src/multimap";
+import { ItemDeclarationModel, ItemDeclaration } from "../src/multimap";
 
 test("Declaration variance", () => {
-    const store = new MultiMapStore();
-    const item: MultiMapItem = {
-        ble: ["sa", "ble"],
-    } as MultiMapItem;
+    const item: ItemDeclarationModel = {
+        featureSasa: 5,
+        featureBle: ["sa", "ble"],
+        featureMulti: [
+            { _value: 1, _reference: "refID", custom: "hello world" },
+            { _type: "override", _value: 2 },
+        ],
+    } as ItemDeclarationModel;
 
-    store.addItems([item]);
-    store.enumerateProperties();
+    const itemDeclaration = new ItemDeclaration(item);
+    console.log(itemDeclaration.getItemFeatures());
+
+    return expect(5).toBe(5);
 });

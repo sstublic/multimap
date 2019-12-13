@@ -1,4 +1,4 @@
 const ble = {};
 ble["sasa:pero"] = [];
-
-console.log("sasa");
+const a = "sasa";
+console.log(typeof a);
