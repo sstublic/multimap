@@ -1,10 +1,11 @@
-import { MultiMapItem, MultiMapParser } from "../src/multimap";
+import { MultiMapItem, MultiMapStore } from "../src/multimap";
 
 test("Declaration variance", () => {
+    const store = new MultiMapStore();
     const item: MultiMapItem = {
         ble: ["sa", "ble"],
     } as MultiMapItem;
 
-    console.log(MultiMapParser.enumerateProperties(item));
-    return expect(10).toBe(10);
+    store.addItems([item]);
+    store.enumerateProperties();
 });

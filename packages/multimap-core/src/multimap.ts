@@ -3,6 +3,7 @@ import { MultiMapStore } from "./data-model/MultiMapStore";
 
 export { MultiMapItem } from "./data-model/MultiMapItem";
 export { MultiMapParser } from "./MultiMapParser";
+export { MultiMapStore } from "./MultiMapStore";
 
 export class MultiMap {
     private multiMapStore: MultiMapStore;
