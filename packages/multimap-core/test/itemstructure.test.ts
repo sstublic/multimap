@@ -1,7 +1,8 @@
-import { ItemDeclarationModel, ItemDeclaration } from "../src/multimap";
+import { ItemDeclarationModel, ItemDeclaration, ItemStore } from "../src/multimap";
 
 test("Declaration variance", () => {
     const item: ItemDeclarationModel = {
+        "multimap:id": "id:1",
         featureSasa: 5,
         featureBool: true,
         featureBle: ["sa", "ble"],
@@ -18,5 +19,6 @@ test("Declaration variance", () => {
 
     console.log(declaration);
 
+    const store = new ItemStore([itemFeatures]);
     return expect(5).toBe(5);
 });
