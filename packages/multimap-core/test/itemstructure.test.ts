@@ -3,6 +3,7 @@ import { ItemDeclarationModel, ItemDeclaration } from "../src/multimap";
 test("Declaration variance", () => {
     const item: ItemDeclarationModel = {
         featureSasa: 5,
+        featureBool: true,
         featureBle: ["sa", "ble"],
         featureMulti: [
             { _value: 1, _reference: "refID", custom: "hello world" },
@@ -10,8 +11,12 @@ test("Declaration variance", () => {
         ],
     } as ItemDeclarationModel;
 
-    const itemDeclaration = new ItemDeclaration(item);
-    console.log(itemDeclaration.getItemFeatures());
+    const itemFeatures = ItemDeclaration.featuresFromDeclaration(item);
+    console.log(itemFeatures);
+
+    const declaration = ItemDeclaration.declarationFromFeatures(itemFeatures);
+
+    console.log(declaration);
 
     return expect(5).toBe(5);
 });

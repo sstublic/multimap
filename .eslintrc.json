@@ -22,6 +22,7 @@
     "plugins": ["@typescript-eslint"],
     "rules": {
         "arrow-parens": "off",
+        "arrow-body-style": "off",
         "linebreak-style": "off",
         "no-console": "off",
         "max-len": ["error", { "code": 150 }],
