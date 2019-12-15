@@ -16,7 +16,6 @@ test("Declaration variance", () => {
     console.log(itemFeatures);
 
     const declaration = ItemDeclaration.declarationFromFeatures(itemFeatures);
-
     console.log(declaration);
 
     const store = new ItemStore([itemFeatures]);
