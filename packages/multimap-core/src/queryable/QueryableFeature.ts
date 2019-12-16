@@ -1,4 +1,5 @@
-import { Feature, ClaimKey, ClaimValue, FeatureClaims } from "../abstractions/ItemTypes";
+import { Feature, ClaimKey, ClaimValue } from "../abstractions/ItemTypes";
+import { FeatureClaims } from "../abstractions/FeatureClaims";
 
 export class QueryableFeature {
     private feature: Feature;

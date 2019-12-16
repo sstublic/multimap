@@ -1,6 +1,8 @@
 import _ from "lodash";
-import { Feature, ClaimValue, ClaimKey, FeatureClaims } from "../abstractions/ItemTypes";
+import { Feature, ClaimValue, ClaimKey } from "../abstractions/ItemTypes";
 import { QueryableFeature } from "./QueryableFeature";
+import { FeatureClaims } from "../abstractions/FeatureClaims";
+import { FeatureTypes } from "../abstractions/FeatureTypes";
 
 export class QueryableFeatureCollection {
     private features: QueryableFeature[] = [];
@@ -23,14 +25,20 @@ export class QueryableFeatureCollection {
         return this.features.length;
     }
 
-    public single(): QueryableFeature {
-        if (this.count() !== 1) {
-            throw new Error(`Expected single item in feature collection, but found ${this.features.length}.`);
-        }
-        return this.features[0];
+    public first(): QueryableFeature | null {
+        return (this.count() < 1)
+            ? null
+            : this.features[0];
     }
 
     // extension/convenience methods
+    public single(): QueryableFeature {
+        if (this.count() !== 1) {
+            throw new Error(`Expected single item in feature collection, but found ${this.count()}.`);
+        }
+        return this.first() as QueryableFeature;
+    }
+
     public withClaim(claimKey: ClaimKey, claimValue?: ClaimValue): QueryableFeatureCollection {
         return this.where(a => a.hasClaim(claimKey, claimValue));
     }
@@ -41,5 +49,13 @@ export class QueryableFeatureCollection {
 
     public any(): boolean {
         return this.count() > 0;
+    }
+
+    public id(): string {
+        const idFeature = this
+            .where(a => a.type() === FeatureTypes.MultiMapId)
+            .single();
+
+        return idFeature.val() as string;
     }
 }

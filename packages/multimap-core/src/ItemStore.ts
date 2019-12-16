@@ -1,16 +1,17 @@
 import _ from "lodash";
-import { Feature } from "./abstractions/ItemTypes";
-import { QueryableFeatureCollection } from "./queryable/QueryableFeatureCollection";
+import { Item } from "./abstractions/ItemTypes";
+import { QueryableItemCollection } from "./queryable/QueryableItemCollection";
 
 export class ItemStore {
-    private itemsFeatures: Feature[][];
+    private items: Item[];
 
-    constructor(itemsFeatures: Feature[][]) {
-        const byKey = _.mapKeys(itemsFeatures, a => new QueryableFeatureCollection(a)
-            .ofType("multimap:id")
-            .single()
-            .val());
+    constructor(items: Item[]) {
+        this.items = items;
+        const byKey = _.groupBy(this.query().select(a => a), a => a.id());
         console.log(byKey);
-        this.itemsFeatures = itemsFeatures;
+    }
+
+    public query(): QueryableItemCollection {
+        return new QueryableItemCollection(this.items);
     }
 }

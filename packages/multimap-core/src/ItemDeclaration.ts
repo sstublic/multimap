@@ -1,6 +1,7 @@
 import _ from "lodash";
 import { ItemDeclarationModel, FeatureDeclarationValueModel, FeatureDeclarationKey } from "./data-model/ItemDeclarationModel";
-import { Feature, FeatureTypeClaimKey, FeatureValueClaimKey } from "./abstractions/ItemTypes";
+import { Feature } from "./abstractions/ItemTypes";
+import { FeatureClaims } from "./abstractions/FeatureClaims";
 
 export class ItemDeclaration {
     public static featuresFromDeclaration(itemDeclarationModel: ItemDeclarationModel): Feature[] {
@@ -9,7 +10,7 @@ export class ItemDeclaration {
     }
 
     public static declarationFromFeatures(features: Feature[]): ItemDeclarationModel {
-        const featuresByType = _.groupBy(features, a => a[FeatureTypeClaimKey]);
+        const featuresByType = _.groupBy(features, a => a[FeatureClaims.Type]);
         const declarationModel = _.mapValues(featuresByType, value => this.createFeatureDeclarationValueModel(value));
         return declarationModel;
     }
@@ -17,7 +18,7 @@ export class ItemDeclaration {
     private static createFeatureDeclarationValueModel(features: Feature[]): FeatureDeclarationValueModel {
         if (features.length === 1) {
             if (this.isFeatureWithValueOnly(features[0])) {
-                return features[0][FeatureValueClaimKey];
+                return features[0][FeatureClaims.Value];
             }
             return this.cloneFeatureExcludeType(features[0]);
         }
@@ -28,12 +29,12 @@ export class ItemDeclaration {
 
     private static cloneFeatureExcludeType(feature: Feature): Feature {
         const featureWithoutType = { ...feature };
-        delete featureWithoutType[FeatureTypeClaimKey];
+        delete featureWithoutType[FeatureClaims.Type];
         return featureWithoutType;
     }
 
     private static isFeatureWithValueOnly(feature: Feature): boolean {
-        return _.every(feature, (value, key) => key === FeatureTypeClaimKey || key === FeatureValueClaimKey);
+        return _.every(feature, (value, key) => key === FeatureClaims.Type || key === FeatureClaims.Value);
     }
 
     private static expandFeatureDeclaration(declarationValue: FeatureDeclarationValueModel, declarationKey: FeatureDeclarationKey): Feature[] {
@@ -44,7 +45,7 @@ export class ItemDeclaration {
         if (declarationValue instanceof Array) {
             return _.map(declarationValue as Feature[], value => {
                 const feature = { ...value };
-                feature[FeatureTypeClaimKey] = declarationKey;
+                feature[FeatureClaims.Type] = declarationKey;
                 return feature;
             });
         }
