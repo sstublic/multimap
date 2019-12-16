@@ -1,4 +1,4 @@
-import { ItemDeclarationModel, ItemDeclaration, ItemStore } from "../src/multimap";
+import { ItemDeclarationModel, ItemStore, MemoryPersistenceProvider } from "../src/multimap";
 
 test("Declaration variance", () => {
     const item: ItemDeclarationModel = {
@@ -12,12 +12,8 @@ test("Declaration variance", () => {
         ],
     } as ItemDeclarationModel;
 
-    const itemFeatures = ItemDeclaration.featuresFromDeclaration(item);
-    console.log(itemFeatures);
+    const provider = MemoryPersistenceProvider.fromItemDeclarationModels([item]);
 
-    const declaration = ItemDeclaration.declarationFromFeatures(itemFeatures);
-    console.log(declaration);
-
-    const store = new ItemStore([itemFeatures]);
+    const store = new ItemStore(provider);
     return expect(5).toBe(5);
 });

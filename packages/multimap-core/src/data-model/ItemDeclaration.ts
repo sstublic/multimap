@@ -1,16 +1,16 @@
 import _ from "lodash";
-import { ItemDeclarationModel, FeatureDeclarationValueModel, FeatureDeclarationKey } from "./data-model/ItemDeclarationModel";
-import { Feature } from "./abstractions/ItemTypes";
-import { FeatureClaims } from "./abstractions/FeatureClaims";
+import { ItemDeclarationModel, FeatureDeclarationValueModel, FeatureDeclarationKey } from "./ItemDeclarationModel";
+import { Feature, Item } from "../abstractions/ItemTypes";
+import { FeatureClaims } from "../abstractions/FeatureClaims";
 
 export class ItemDeclaration {
-    public static featuresFromDeclaration(itemDeclarationModel: ItemDeclarationModel): Feature[] {
+    public static itemFromDeclaration(itemDeclarationModel: ItemDeclarationModel): Item {
         const features = _.flatMap(itemDeclarationModel, (value, key) => this.expandFeatureDeclaration(value, key));
-        return features as Feature[];
+        return features as Item;
     }
 
-    public static declarationFromFeatures(features: Feature[]): ItemDeclarationModel {
-        const featuresByType = _.groupBy(features, a => a[FeatureClaims.Type]);
+    public static declarationFromItem(item: Item): ItemDeclarationModel {
+        const featuresByType = _.groupBy(item, a => a[FeatureClaims.Type]);
         const declarationModel = _.mapValues(featuresByType, value => this.createFeatureDeclarationValueModel(value));
         return declarationModel;
     }

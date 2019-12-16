@@ -1,15 +1,16 @@
+import _ from "lodash";
 import { Feature, ClaimKey, ClaimValue } from "../abstractions/ItemTypes";
 import { FeatureClaims } from "../abstractions/FeatureClaims";
 
 export class QueryableFeature {
     private feature: Feature;
 
-    constructor(feature: Feature | QueryableFeature) {
-        if (feature instanceof QueryableFeature) {
-            this.feature = (feature as QueryableFeature).feature;
-        } else {
-            this.feature = feature as Feature;
-        }
+    constructor(feature: Feature) {
+        this.feature = feature;
+    }
+
+    public findIn(searchFeatures: Feature[]): Feature | undefined {
+        return _.find(searchFeatures, a => a === this.feature);
     }
 
     public claimValue(claimKey: ClaimKey, defaultIfMissing?: ClaimValue): ClaimValue {

@@ -1,3 +1,4 @@
-export * from "./ItemDeclaration";
+export * from "./data-model/ItemDeclaration";
 export * from "./data-model/ItemDeclarationModel";
-export * from "./ItemStore";
+export * from "./store/ItemStore";
+export * from "./persistence/MemoryPersistenceProvider";
