@@ -1,29 +1,31 @@
-// dictionary of properties pattern
 {
-    "multimap:id": "item1",
-    "multimap:displayName": "item1",
+    // dictionary of properties pattern
+    "item": 
+    {
+        "multimap:id": "item1",
+        "multimap:displayName": "item1",
 
-    // links to other entity
-    "todo:tasklink": [
-        { "_reference": "item_id", "value": 5 }, 
-        { "_reference": "item_id_2", "value": 1 }
-    ],
+        // links to other entity
+        "todo:tasklink": [
+            { "_reference": "item_id", "value": 5 }, 
+            { "_reference": "item_id_2", "value": 1 }
+        ],
 
-    // property
-    "estimatedWork": 10, // shorthand for "estimatedWork": [{ "value": 10 }],
-    "tasktype": "todo",
+        // property
+        "estimatedWork": 10, // shorthand for "estimatedWork": [{ "value": 10 }],
+        "tasktype": "todo",
 
-    // property, tags pattern, support multiple items
-    "tag": [
-        { "value": "important" }, 
-        { "value": "inbox" }
-    ],
+        // property, tags pattern, support multiple items
+        "tag": [
+            { "value": "important" }, 
+            { "value": "inbox" }
+        ],
 
-    "taskbody": "some markup"
-}
+        "taskbody": "some markup"
+    },
 
-// array of properties pattern
-{
+    // array of properties pattern
+    "item2": 
     [
         { "type": "_link", "referencedItem": "item_id", "value": 5 },
         { "type": "_link", "referencedItem": "item_id_2", "value": 1 },
@@ -33,4 +35,3 @@
         { "type": "tag", "value": "inbox" }
     ]
 }
-

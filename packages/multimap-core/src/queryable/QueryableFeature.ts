@@ -13,6 +13,14 @@ export class QueryableFeature {
         return _.find(searchFeatures, a => a === this.feature);
     }
 
+    public findInRequired(searchFeatures: Feature[]): Feature {
+        const match = this.findIn(searchFeatures);
+        if (!match) {
+            throw new Error("Failed to find a required match for the feature.");
+        }
+        return match;
+    }
+
     public claimValue(claimKey: ClaimKey, defaultIfMissing?: ClaimValue): ClaimValue {
         if (this.feature[claimKey] === undefined) {
             if (defaultIfMissing === undefined) {

@@ -42,6 +42,14 @@ export class QueryableItem {
     }
 
     // extension/convenience methods
+    public findInRequired(searchItems: Item[]): Item {
+        const match = this.findIn(searchItems);
+        if (!match) {
+            throw new Error("Failed to find a required match for the item.");
+        }
+        return match;
+    }
+
     public single(): QueryableFeature | undefined {
         if (this.count() > 1) {
             throw new Error(`Expected single item in feature collection, but found ${this.count()}.`);
