@@ -1,6 +1,7 @@
 {
   "name": "@multimap/core",
   "version": "1.0.0",
+  "author": "Sasa Stublic <sasa.stublic@gmail.com>",
   "description": "",
   "main": "./dist/multimap.js",
   "typings": "./dist/multimap.d.ts",
@@ -9,7 +10,6 @@
     "start": "node ../dist/main.js",
     "build": "tsc"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "lodash": "4.17.15"

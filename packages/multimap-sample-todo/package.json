@@ -1,18 +1,17 @@
 {
-  "name": "@multimap/cli",
+  "name": "@multimap/sample-todo",
   "version": "1.0.0",
   "description": "",
   "author": "Sasa Stublic <sasa.stublic@gmail.com>",
-  "main": "./dist/main.js",
+  "license": "ISC",
+  "main": "./dist/multimap-sample-todo.js",
   "scripts": {
     "test": "jest --no-cache",
-    "start": "node ./dist/main.js",
+    "start": "node ../dist/main.js",
     "build": "tsc"
   },
-  "license": "ISC",
   "dependencies": {
-    "@multimap/core": "^1.0.0"
-  },
-  "devDependencies": {
+    "lodash": "4.17.15",
+    "@multimap/core": "1.0.0"
   }
 }

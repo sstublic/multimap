@@ -4,5 +4,8 @@
         "javascriptreact",
         "typescript"
     ],
-    "jest.pathToJest": "npm run test --"
+    "jest.pathToJest": "npm run test --",
+    "files.associations": {
+        "**/docs/*.json": "jsonc"
+    }
 }

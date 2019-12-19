@@ -1,12 +1,12 @@
-import fs from "fs";
-import { MultiMap } from "@multimap/core";
-
 export default class MainApp {
-    public static Run(): void {
+    public static Run(x: string): void {
         // fs.writeFileSync("test.json", JSON.stringify({ name: "pero" }));
         console.log("App run 8...");
-        const map = new MultiMap({ items: [] });
-        console.log(map.getItemCount());
+        import(x).then(a => {
+            console.log(a);
+            const p = new a.BlebliClass();
+            p.run();
+        });
     }
 
     public static Size(str: string): number {
@@ -14,4 +14,4 @@ export default class MainApp {
     }
 }
 
-MainApp.Run();
+MainApp.Run("./blebli");
