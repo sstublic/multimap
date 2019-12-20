@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { Item, Feature, ClaimValue, ClaimKey } from "../abstractions/ItemTypes";
 import { QueryableItemCollection } from "../queryable/QueryableItemCollection";
-import { PersistenceProvider } from "../abstractions/IPersistenceProvider";
+import { PersistenceProvider } from "../abstractions/PersistenceProvider";
 import { FeatureClaims } from "../abstractions/FeatureClaims";
 import { FeatureTypes } from "../abstractions/FeatureTypes";
 import { QueryableItem } from "../queryable/QueryableItem";

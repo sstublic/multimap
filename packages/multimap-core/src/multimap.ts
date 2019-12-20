@@ -3,3 +3,4 @@ export * from "./data-model/ItemDeclarationModel";
 export * from "./store/ItemStore";
 export * from "./persistence/MemoryPersistenceProvider";
 export * from "./persistence/FilePersistenceProvider";
+export * from "./abstractions/PersistenceProvider";

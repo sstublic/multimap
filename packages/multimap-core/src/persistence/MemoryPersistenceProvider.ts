@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { PersistenceProvider } from "../abstractions/IPersistenceProvider";
+import { PersistenceProvider } from "../abstractions/PersistenceProvider";
 import { ItemDeclarationModel } from "../data-model/ItemDeclarationModel";
 import { ItemDeclaration } from "../data-model/ItemDeclaration";
 import { Item } from "../abstractions/ItemTypes";

@@ -1,6 +1,6 @@
 import fs from "fs";
 import _ from "lodash";
-import { PersistenceProvider } from "../abstractions/IPersistenceProvider";
+import { PersistenceProvider } from "../abstractions/PersistenceProvider";
 import { Item } from "../abstractions/ItemTypes";
 import { ItemDeclarationModel } from "../data-model/ItemDeclarationModel";
 import { ItemDeclaration } from "../data-model/ItemDeclaration";
