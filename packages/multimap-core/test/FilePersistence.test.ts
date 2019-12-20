@@ -15,5 +15,5 @@ test("Throws on duplicate id", () => {
     store.addItem("234");
     store.addFeature("123", "test:content", ["line1", "line2"]);
     store.save();
-    return expect(true).toBe(true);
+    return expect(2).toBe(2);
 });

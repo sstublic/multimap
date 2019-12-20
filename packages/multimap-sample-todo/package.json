@@ -5,9 +5,10 @@
   "author": "Sasa Stublic <sasa.stublic@gmail.com>",
   "license": "ISC",
   "main": "./dist/multimap-sample-todo.js",
+  "typings": "./dist/multimap-sample-todo.d.ts",
   "scripts": {
     "test": "jest --no-cache",
-    "start": "node ../dist/main.js",
+    "start": "node ./dist/main.js",
     "build": "tsc"
   },
   "dependencies": {

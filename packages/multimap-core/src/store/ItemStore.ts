@@ -16,7 +16,7 @@ export class ItemStore {
         this.load();
     }
  
-    public addItem(itemId: string): void {
+    public addItem(itemId: string): QueryableItem {
         if (this.findItem(itemId)) {
             throw new Error(`Item with id ${itemId} already exists.`);
         }
@@ -24,6 +24,7 @@ export class ItemStore {
         const idFeature = this.createFeature(FeatureTypes.MultiMapId, itemId);
         newItem.push(idFeature);
         this.items.push(newItem);
+        return new QueryableItem(newItem);
     }
 
     public removeItemById(itemId: string): void {
@@ -39,7 +40,7 @@ export class ItemStore {
         _.remove(this.items, a => a === itemInstance);
     }
 
-    public addFeature(itemId: string, type: ClaimKey, value: ClaimValue): void {
+    public addFeature(itemId: string, type: ClaimKey, value: ClaimValue): QueryableFeature {
         const item = this.findItem(itemId);
         if (!item) {
             throw new Error(`Item with id '${itemId}' was not found.`);
@@ -49,7 +50,9 @@ export class ItemStore {
         if (!itemInstance) {
             throw new Error("Unexpected non-matched instance.");
         }
-        itemInstance.push(this.createFeature(type, value));
+        const newFeature = this.createFeature(type, value);
+        itemInstance.push(newFeature);
+        return new QueryableFeature(newFeature);
     }
 
     public removeFeature(queryableItem: QueryableItem, queryableFeature: QueryableFeature): void {

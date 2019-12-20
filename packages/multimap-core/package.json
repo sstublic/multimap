@@ -7,7 +7,7 @@
   "typings": "./dist/multimap.d.ts",
   "scripts": {
     "test": "jest --no-cache",
-    "start": "node ../dist/main.js",
+    "start": "node ./dist/main.js",
     "build": "tsc"
   },
   "license": "ISC",
