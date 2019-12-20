@@ -2,7 +2,6 @@ import path from "path";
 import fs from "fs";
 import { FilePersistenceProvider, ItemStore } from "../src/multimap";
 
-
 test("Throws on duplicate id", () => {
     const workingFolder = path.resolve(__dirname, "../tmp");
     const filePath = path.resolve(workingFolder, "test-map.json");

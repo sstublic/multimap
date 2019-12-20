@@ -12,17 +12,19 @@ export class ToDo {
             this.add(commandArgs);
         } else if (command === "list") {
             this.list(commandArgs);
+        } else if (command === "edit") {
+            this.edit(commandArgs);
         } else {
             console.log(`Unknown command '${command}'.`);
         }
     }
 
     public static add(args: string[]): void {
-        const id = args[0] ?? Math.floor(Math.random() * 10000);
-        const list = args[1] ?? "Default list";
-        const title = args[2] ?? "Untitled item";
+        const list = args[0] ?? "Default list";
+        const title = args[1] ?? "Untitled item";
 
         const store = this.getStore();
+        const id = store.createValidId(title);
         store.addItem(id);
         store.addFeature(id, "sample-todo:list", list);
         store.addFeature(id, "sample-todo:title", title);
@@ -49,6 +51,14 @@ export class ToDo {
         
         const byList = _.groupBy(result, a => a.list);
         _.forEach(byList, (a, listName) => this.displayItem(listName, a));
+    }
+
+    public static edit(args: string[]): void {
+        const editorPackageName = "tiny-cli-editor";
+        import(editorPackageName).then(editor => {
+            console.log(editor.default);
+            editor.default("");
+        });
     }
 
     static displayItem(list: string, items: { id: string; list: string; title: string }[]): void {

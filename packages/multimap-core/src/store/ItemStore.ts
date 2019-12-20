@@ -81,6 +81,26 @@ export class ItemStore {
         return new QueryableItemCollection(this.items);
     }
 
+    public createValidId(semanticName: string): string {
+        const regex = /([^a-z0-9\s]|\s+)/gm;
+        const newIdBase = semanticName
+            .toLowerCase()
+            .trim()
+            .replace(regex, "_");
+
+        const allIds = new Set(this.query().select(a => a.id()));
+        
+        let postfix = 1;
+        let candidate = newIdBase;
+
+        while (allIds.has(candidate)) {
+            candidate = `${newIdBase}_${postfix}`;
+            postfix++;
+        }
+        
+        return candidate;
+    }
+
     private initializeWithItems(items: Item[]): void {
         this.items = items;
     }

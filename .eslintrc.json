@@ -21,6 +21,7 @@
     "parser": "@typescript-eslint/parser",
     "plugins": ["@typescript-eslint"],
     "rules": {
+        "no-plusplus": "off",
         "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
         "no-trailing-spaces": ["error", { "skipBlankLines": true }],
         "object-curly-newline": ["error", { "ImportDeclaration": "never" }],
